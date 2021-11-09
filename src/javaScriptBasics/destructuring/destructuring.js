@@ -11,6 +11,7 @@ let [icAnadolu, marmara, karadeniz,[icAnadoluSehirleri]] = [
   ],
 ];
 
+
 // console.log(icAnadolu.name);
 // console.log(icAnadolu.population);
 console.log(icAnadoluSehirleri)

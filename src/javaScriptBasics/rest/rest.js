@@ -3,7 +3,7 @@ function addToCart(x) {
 }
 
 let products=[
-    {productName:"Elma",unitPrice:10,quantity:5},
+    {productName:"Elma",unitPrice:10,quantity:5}, 
     {productName:"Armut",unitPrice:10,quantity:5},
     {productName:"Karpuz",unitPrice:10,quantity:5}
  
@@ -36,7 +36,12 @@ function add(...numbers) {
     console.log(total)
 
 }
+
+
+// ...numbers--> let numbers=[20,30]
 add(20,30)
+// ...numbers--> let numbers=[20,30,40]
 add(20,30,40)
+// ...numbers--> let numbers=[20,30,40,50]
 add(20,30,40,50)
 
