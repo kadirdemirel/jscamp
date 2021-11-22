@@ -1,27 +1,43 @@
-import User from "../models/user.js"
-import UserService from "../services/userService.js"
-import {BaseLogger, ElasticLogger} from "../crossCuttingConcerns/logging/logger.js"
+import User from "../models/user.js";
+import UserService from "../services/userService.js";
+import {
+  BaseLogger,
+  ElasticLogger,
+} from "../crossCuttingConcerns/logging/logger.js";
+import Customer from "../models/customer.js";
 
-console.log("User component loaded !")
+onsole.log("User component yüklendi")
 
+let logger1 = new MongoLogger()
+let userService = new UserService(logger1)
 
-let logger1=new ElasticLogger()
-let userService =new UserService(logger1)
-
-let user1=new User(1,"Kadir","Demirel","Mersin")
-let user2=new User(2,"Kadir","Demirel","İzmir")
-
+let user1 = new User(1,"Engin","Demiroğ","Ankara")
+let user2 = new User(2,"Baran","Gökçekli","Muğla")
 userService.add(user1)
 userService.add(user2)
-userService.getById(1)
-userService.list()
-console.log(userService.list())
-console.log(userService.getById(2))
+
+//console.log(userService.list())
+//console.log(userService.getById(2))
 
 
-//JavaScript'te sonradan değer set edebiliriz ve buna prototyping denir.
-let customer={id:1,firstName:"Kadir"}
+
+
+let customer = {id:1, firstName:"Engin"}
+
 //prototyping
-customer.lastName="Demirel"
+customer.lastName = "Demiroğ"
 
 console.log(customer.lastName)
+
+console.log("--------------------------")
+userService.load()
+
+
+let customerToAdd = new Customer(1,"Seda","Yılmaz","Ankara","fdgdfg");
+customerToAdd.type = "customer"
+
+userService.add(customerToAdd)
+console.log(userService.customers)
+console.log(userService.employees)
+console.log(userService.errors)
+console.log(userService.getCustomersSorted())
